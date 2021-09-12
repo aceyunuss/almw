@@ -6,35 +6,71 @@ import (
 )
 
 func Router(r *gin.Engine) {
-	r.GET("/", index)
-	r.GET("/contact", contact)
-	r.GET("/about", about)
+	r.GET("/", radio)
+	r.GET("/managesite", login)
+	r.GET("/managesite/login", login)
+	r.GET("/managesite/dashboard", dashboard)
+	r.GET("/managesite/settings", settings)
+	r.GET("/managesite/users", users)
+	r.GET("/managesite/schedule", schedule)
 }
 
-func index(c *gin.Context) {
+func login(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
-		"views/index.html",
+		"views/login.tmpl",
 		gin.H{
-			"title": "awikwok",
+			"title": "Login",
 		},
 	)
 }
 
-func about(c *gin.Context) {
+func radio(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
-		"views/about.html",
-		gin.H{},
+		"views/radio.tmpl",
+		gin.H{
+			"title": "Radio Broadcast Al-Muwasholah",
+		},
 	)
 }
 
-func contact(c *gin.Context) {
+func dashboard(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
-		"views/contact.html",
+		"views/dashboard.tmpl",
 		gin.H{
-			"title": "Contact",
+			"title": "Dashboard",	
+		},
+	)
+}
+
+func settings(c *gin.Context) {
+	c.HTML(
+		http.StatusOK,
+		"views/settings.tmpl",
+		gin.H{
+			"title": "Settings",
+		},
+	)
+}
+
+func users(c *gin.Context) {
+	c.HTML(
+		http.StatusOK,
+		"views/users.tmpl",
+		gin.H{
+			"title": "Users",
+		},
+	)
+}
+
+func schedule(c *gin.Context) {
+	c.HTML(
+		http.StatusOK,
+		"views/schedule.tmpl",
+		gin.H{
+			"title": "Schedule",
 		},
 	)
 }
